@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="html/css/styles.min.css">
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="lib/js/angular.min.js"></script>
+    <script src="lib/js/angular-animate.min.js"></script>
+    <script src="lib/js/angular-cookies.min.js"></script>
+    <script src="lib/js/angular-route.min.js"></script>
+
+    <script src="html/js/main.min.js"></script>
+  </head>
+  <body ng-controller="BodyCtrl">
+    <section class="top-bar">
+      <h1>RefiO</h1>
+    </section>
+    <section class="container">
+      <div class="my-appraisal">
+        <h2>我的藥局評價</h2>
+        <div class=hello>
+          <div class="star-rating js-star-rating">
+            <input class="star-rating__input" type="radio" name="rating" value="1"><i class="star-rating__star"></i>
+            <input class="star-rating__input" type="radio" name="rating" value="2"><i class="star-rating__star"></i>
+            <input class="star-rating__input" type="radio" name="rating" value="3"><i class="star-rating__star"></i>
+            <input class="star-rating__input" type="radio" name="rating" value="4"><i class="star-rating__star"></i>
+            <input class="star-rating__input" type="radio" name="rating" value="5"><i class="star-rating__star"></i>
+            <div class="current-rating current-rating--3-5 js-current-rating"><i class="star-rating__star">AAA</i></div>
+          </div>
+          </div>
+      </div>
+      <div class="my-customer">
+        <div class="media-cell"><h2>評價病人紀錄</h2></div>
+        <div class="media-cell customer-pagination">
+          <i class="fa fa-caret-left"></i>
+          <span>1/1</span>
+          <i class="fa fa-caret-right"></i>
+        </div>
+        <div class="feedback" ng-repeat="data in datas">
+          <div class="two-row">
+            <h3><i class="fa fa-check-square-o"></i>藥局：嘉恩藥局<span>（<small>{{data.inf}}</small>）</span></h3>
+          </div>
+          <div class="two-row">
+            <p>藥局意見：{{data.view}}</p>
+            <p>{{data.viewdate}}</p>
+          </div>
+          <div class="two-row">
+            <p>病人回覆：{{data.feedback}}</p>
+            <img src="{{data.img}}" alt="" style="width: 600px">
+            <p>{{data.feedbackdate}}</p>
+          </div>
+          <textarea ng-if="showAdd" class="text-area" name="name" rows="8" cols="40"></textarea>
+          <button class="btn btn-right" ng-show="showAdd!=true" ng-click="showAdd=true">新增意見</button>
+          <button class="btn btn-right" ng-show="showAdd==true" ng-click="showAdd=false">送出</button>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
